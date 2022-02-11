@@ -2,7 +2,7 @@ import React from 'react'
 
 function RepoList(props) {
     const [userRepos, setUserRepos] = React.useState([])
-    const [searchName, setSearchName] = React.useState(props.searchName)
+    const [searchName, setSearchName] = React.useState(JSON.parse(localStorage.getItem("searchUser")) || props.searchName)
     const [userExists, setUserExists] = React.useState(false)
     const [searchField, setSearchField] = React.useState(searchName)
 
@@ -38,7 +38,7 @@ function RepoList(props) {
     if (userExists) {
         repoElements = userRepos.map(repo => {
             return (
-                <div className='shadow-slate-700 shadow p-5 cursor-pointer' key={repo.id} onClick={() => handleRepoClick(repo.commits_url)}> {repo.name} </div>
+                <div className='shadow-slate-700 shadow p-5 cursor-pointer' key={repo.id} onClick={() => handleRepoClick(repo.commits_url, repo.name)} > {repo.name} </div>
             )
         })
     }
@@ -52,13 +52,14 @@ function RepoList(props) {
         e.preventDefault()
         console.log(searchField)
         setSearchName(searchField)
+        localStorage.setItem("searchUser", JSON.stringify(searchField))
     }
 
-    function handleRepoClick(url) {
+    function handleRepoClick(url, name) {
         console.log("repo clicked " + url.slice(0, -6))
-        props.repoOnClick(url.slice(0, -6))
+        console.log(name)
+        props.repoOnClick(url.slice(0, -6), name)
     }
-
     return (
         <div className='text-white p-10 overflow-auto'>
             <form className='flex justify-center'>
