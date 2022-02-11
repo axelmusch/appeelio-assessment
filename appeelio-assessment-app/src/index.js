@@ -4,9 +4,9 @@ import App from './App';
 import './index.css';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <div className='bg-main h-screen overflow-hidden'>
     <App />
-  </React.StrictMode>,
+  </div >,
   document.getElementById('root')
 );
 
