@@ -14,11 +14,19 @@ function App() {
     setCommitInfo({ show: true, repo: repo + "?per_page=20" })
   }
 
+  function handleBack() {
+    setCommitInfo(prevCommit => {
+      return {
+        ...prevCommit,
+        show: false
+      }
+    })
+  }
+
   return (
     <div className="bg-main flex flex-col h-full">
       <Header />
-
-      {!commitInfo.show ? <RepoList searchName={"axelmusch"} repoOnClick={(repo) => handleRepoClick(repo)} /> : <CommitList repoUrl={commitInfo.repo} />}
+      {!commitInfo.show ? <RepoList searchName={"axelmusch"} repoOnClick={(repo) => handleRepoClick(repo)} /> : <CommitList backOnClick={handleBack} repoUrl={commitInfo.repo} />}
     </div>
   );
 }
