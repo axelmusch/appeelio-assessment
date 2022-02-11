@@ -38,7 +38,7 @@ function RepoList(props) {
     if (userExists) {
         repoElements = userRepos.map(repo => {
             return (
-                <div className='shadow-slate-700 shadow p-5' key={repo.id}> {repo.name} </div>
+                <div className='shadow-slate-700 shadow p-5 cursor-pointer' key={repo.id} onClick={() => handleRepoClick(repo.commits_url)}> {repo.name} </div>
             )
         })
     }
@@ -52,6 +52,11 @@ function RepoList(props) {
         e.preventDefault()
         console.log(searchField)
         setSearchName(searchField)
+    }
+
+    function handleRepoClick(url) {
+        console.log("repo clicked " + url.slice(0, -6))
+        props.repoOnClick(url.slice(0, -6))
     }
 
     return (
