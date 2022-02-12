@@ -1,5 +1,5 @@
 import React from 'react'
-import { useParams, useNavigate } from "react-router-dom"
+import { useParams, useNavigate, Link } from "react-router-dom"
 
 import Commit from './Commit';
 
@@ -16,6 +16,7 @@ function CommitList(props) {
         fetch(`https://api.github.com/repos/${user}/${reponame}/commits?per_page=20`)
             .then(res => res.json())
             .then(data => {
+                console.log(data)
                 setCommitList(data)
             })
             .catch(error => {
@@ -26,7 +27,10 @@ function CommitList(props) {
 
     const commitElements = commitList.map(commit => {
         if (commit.commit.message.includes(search)) {
-            return <Commit key={commit.node_id} commitData={commit} />
+            return (
+                <Link key={commit.node_id} to={`/${user}/${reponame}/commits/${commit.sha}`}>
+                    <Commit commitData={commit} />
+                </Link>)
 
         } else {
             return

@@ -2,6 +2,7 @@ import React from "react"
 import { BrowserRouter as Router } from "react-router-dom";
 
 import { Link, Route, Routes } from "react-router-dom";
+import CommitDetail from "./CommitDetail";
 
 import CommitList from "./components/CommitList";
 import Header from "./components/Header";
@@ -36,8 +37,10 @@ function App() {
           </Route>
 
           <Route path="/:user/:reponame" element={<CommitList backOnClick={handleBack} />}>
-          </Route>
 
+          </Route>
+          <Route path="/:user/:reponame/commits/:commitsha" element={<CommitDetail />}>
+          </Route>
         </Routes>
 
 
