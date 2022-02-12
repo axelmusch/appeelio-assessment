@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 
 function RepoList(props) {
     const [userRepos, setUserRepos] = React.useState([])
@@ -33,12 +34,13 @@ function RepoList(props) {
             });
     }, [searchName])
 
-    //console.log(userRepos)
     let repoElements
     if (userExists) {
         repoElements = userRepos.map(repo => {
             return (
-                <div className='shadow-slate-700 shadow p-5 cursor-pointer' key={repo.id} onClick={() => handleRepoClick(repo.commits_url, repo.name)} > {repo.name} </div>
+                <Link key={repo.id} to={`/${searchName}/${repo.name}`}>
+                    <div className='shadow-slate-700 shadow p-5 cursor-pointer' key={repo.id} > {repo.name} </div>
+                </Link>
             )
         })
     }
@@ -64,7 +66,7 @@ function RepoList(props) {
         <div className='text-white p-10 overflow-auto'>
             <form className='flex justify-center'>
                 <input onChange={handleSearchField} name="searchField" className='rounded text-accent indent-2' value={searchField}></input>
-                <button className='ml-10 p-2 rounded bg-green-800 outline-0' onClick={searchUser}>Search</button>
+                <button className='ml-10 px-4 py-2 rounded-full bg-cyan-500 outline-0' onClick={searchUser}>Search</button>
             </form>
             <h1 className='text-center text-3xl mt-10'>GIT repos for user: {searchName}</h1>
             <div className='mt-20 grid grid-cols-3 gap-10 '>{userExists ? repoElements : `user '${searchField}' does not exist`}</div>
