@@ -41,13 +41,10 @@ function CommitList(props) {
         const { name, value } = event.target
         setSearch(value)
     }
-    function goBack() {
-        history("/")
-    }
+
 
     return (
         <div className='flex flex-col p-20 items-center h-screen'>
-            <div className='bg-cyan-500 rounded-full text-white px-4 py-2 self-start cursor-pointer' onClick={goBack}>back</div>
             <h1 className='text-white'>Commits for {reponame}</h1>
             <form className=''>
                 <input placeholder='Search for a commit' onChange={handleSearch} name="searchField" className='rounded text-accent indent-2' value={search} ></input>
