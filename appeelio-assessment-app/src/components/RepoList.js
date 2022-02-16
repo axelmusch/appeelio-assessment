@@ -109,7 +109,7 @@ function RepoList(props) {
     }
 
     return (
-        <div className='text-white p-10 overflow-auto'>
+        <div className='text-white p-10 overflow-auto cust-scroll'>
             <form className='flex justify-center'>
                 <input onChange={handleSearchField} name="searchField" className='rounded text-accent indent-2' value={searchField}></input>
                 <button className='ml-10 px-4 py-2 rounded-full bg-cyan-500 outline-0' onClick={searchUser}>Search</button>
@@ -124,7 +124,7 @@ function RepoList(props) {
             </div>
 
 
-            <div className='mt-20 grid grid-cols-3 gap-10'>{userExists ? repoElements : `user '${searchField}' does not exist`}</div>
+            <div className='mt-20 grid grid-cols-3 gap-10 '>{userExists ? repoElements : `user '${searchField}' does not exist`}</div>
         </div>
     )
 }

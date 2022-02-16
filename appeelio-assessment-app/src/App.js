@@ -33,12 +33,12 @@ function App() {
         <Header />
 
         <Routes>
-          <Route path="/" element={<RepoList searchName={"axelmusch"} repoOnClick={(repo, name) => handleRepoClick(repo, name)} />}>
+          <Route path="/" element={<RepoList searchName={"fireship-io"} repoOnClick={(repo, name) => handleRepoClick(repo, name)} />}>
           </Route>
 
           <Route path="/:user/:reponame" element={<CommitList backOnClick={handleBack} />}>
-
           </Route>
+
           <Route path="/:user/:reponame/commits/:commitsha" element={<CommitDetail />}>
           </Route>
         </Routes>

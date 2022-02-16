@@ -49,7 +49,7 @@ function CommitList(props) {
             <form className=''>
                 <input placeholder='Search for a commit' onChange={handleSearch} name="searchField" className='rounded text-accent indent-2' value={search} ></input>
             </form>
-            <div className='pt-6 overflow-auto'>{commitElements}</div>
+            <div className='mt-6 overflow-auto cust-scroll'>{commitElements}</div>
         </div>
 
     )
