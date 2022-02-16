@@ -1,6 +1,6 @@
 import React from 'react'
-import { useParams } from "react-router-dom"
 
+import { useParams } from "react-router-dom"
 
 function CommitDetail() {
     const { user, reponame, commitsha } = useParams()
@@ -17,8 +17,7 @@ function CommitDetail() {
                 console.error('User not found', error);
 
             });
-    }, [])
-
+    }, [user, reponame, commitsha])
 
     return (
         <div className='text-white px-60 py-20'>
@@ -32,7 +31,7 @@ function CommitDetail() {
             <div>{commitInfo && commitInfo.files.map(file => {
                 return <p key={file.sha} className='ml-6'>{file.filename}</p>
             })}</div>
-            <a href={commitInfo && commitInfo.html_url} target='_blank'>View on github</a>
+            <a href={commitInfo && commitInfo.html_url} target='_blank' rel="noreferrer">View on github</a>
         </div>
     )
 }
