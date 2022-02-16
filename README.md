@@ -1,11 +1,12 @@
 
-In the project directory, you can run:
+In the project directory(/appeelio-assessment-app/), you can run:
+### `npm i` (NodeJS version min. requirement is v12.13)
 ### `npm start`
  Runs the app in the development mode.\
  Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 ### `styling`
-    tailwind css
+    tailwind css om snel simpele stying toe te voegen
     
 ### `ES6 functions`
     --> arrow functions
